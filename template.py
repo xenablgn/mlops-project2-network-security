@@ -2,7 +2,7 @@ import logging
 import os
 from pathlib import Path
 
-project_name='mlops-project2-network-security'
+project_name = "mlops-project2-network-security"
 
 list_of_files = [
     ".github/workflows/main.yml",
@@ -33,15 +33,15 @@ list_of_files = [
 
 
 for filepath in list_of_files:
-    filepath= Path(filepath)
+    filepath = Path(filepath)
     filedir, filename = os.path.split(filepath)
 
     if filedir != "":
         os.makedirs(filedir, exist_ok=True)
         logging.info(f"Creating directory: {filedir} for file: {filename}")
-    
+
     if filename and (not os.path.exists(filepath) or os.path.getsize(filepath) == 0):
-        with open (file=filepath, mode='w') as f:
+        with open(file=filepath, mode="w") as f:
             pass
         logging.info(f"Creating file: {filepath}")
     elif filename:

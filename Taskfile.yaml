@@ -1,0 +1,25 @@
+version: "3"
+
+tasks:
+  install:
+    cmds:
+      - python -m pip install -r requirements-dev.txt
+      - python -m pip install -r requirements.txt
+
+  format:
+    cmds:
+      - ruff format .
+
+  lint:
+    cmds:
+      - ruff check .
+
+  fix:
+    cmds:
+      - ruff check . --fix
+
+  quality:
+    deps:
+      - format
+      - fix
+      - lint

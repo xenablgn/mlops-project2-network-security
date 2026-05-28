@@ -1,0 +1,24 @@
+[tool.black]
+line-length = 88
+target-version = ["py312"]
+include = "\\.pyi?$"
+extend-exclude = """
+.git
+.venv
+venv
+artifacts
+logs
+"""
+
+[tool.ruff]
+line-length = 88
+target-version = "py312"
+extend-exclude = ["venv", ".venv", "artifacts", "logs", "**/*.ipynb"]
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "W", "N", "UP", "B"]
+ignore = ["E501"]
+
+[tool.ruff.format]
+quote-style = "double"
+indent-style = "space"
