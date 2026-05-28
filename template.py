@@ -6,8 +6,8 @@ project_name='mlops-project2-network-security'
 
 list_of_files = [
     ".github/workflows/main.yml",
-    "network_data",
-    "notebooks",
+    "network_data/",
+    "research/research.ipynb",
     "config/config.yaml",
     "params.yaml",
     "schema.yaml",
@@ -40,9 +40,9 @@ for filepath in list_of_files:
         os.makedirs(filedir, exist_ok=True)
         logging.info(f"Creating directory: {filedir} for file: {filename}")
     
-    if (not os.path.exists(filepath) or os.path.getsize(filepath) == 0):
+    if filename and (not os.path.exists(filepath) or os.path.getsize(filepath) == 0):
         with open (file=filepath, mode='w') as f:
             pass
         logging.info(f"Creating file: {filepath}")
-    else:
+    elif filename:
         logging.info(f"File already exists: {filepath}")
