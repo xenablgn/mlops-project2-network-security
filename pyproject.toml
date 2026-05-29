@@ -1,3 +1,30 @@
+[build-system]
+requires = ["setuptools"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "mlops-project2-network-security"
+version = "0.1.0"
+description = "A project for MLOps in network security"
+authors = [{name = "SN Bilgin", email = "senanrbilgin@gmail.com"}]
+requires-python = ">=3.12"
+dependencies = [
+    "python-dotenv",
+    "pandas",
+    "numpy",
+    "setuptools",
+    "certifi",
+    "pymongo",
+]
+
+[project.optional-dependencies]
+dev = [
+    "black==24.10.0",
+    "ruff==0.8.6",
+    "isort==5.13.2",
+    "pre-commit==4.0.1",
+]
+
 [tool.black]
 line-length = 88
 target-version = ["py312"]

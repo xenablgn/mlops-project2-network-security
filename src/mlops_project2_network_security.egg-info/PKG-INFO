@@ -1,0 +1,21 @@
+Metadata-Version: 2.4
+Name: mlops-project2-network-security
+Version: 0.1.0
+Summary: A project for MLOps in network security
+Author: SN Bilgin
+Author-email: SN Bilgin <senanrbilgin@gmail.com>
+Requires-Python: >=3.12
+License-File: LICENSE
+Requires-Dist: python-dotenv
+Requires-Dist: pandas
+Requires-Dist: numpy
+Requires-Dist: setuptools
+Requires-Dist: certifi
+Requires-Dist: pymongo
+Provides-Extra: dev
+Requires-Dist: black==24.10.0; extra == "dev"
+Requires-Dist: ruff==0.8.6; extra == "dev"
+Requires-Dist: isort==5.13.2; extra == "dev"
+Requires-Dist: pre-commit==4.0.1; extra == "dev"
+Dynamic: author
+Dynamic: license-file

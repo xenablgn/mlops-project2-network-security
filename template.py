@@ -2,7 +2,7 @@ import logging
 import os
 from pathlib import Path
 
-project_name = "mlops-project2-network-security"
+project_name = "networksecurity"
 
 list_of_files = [
     ".github/workflows/main.yml",

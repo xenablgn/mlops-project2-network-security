@@ -1,3 +1,10 @@
 python-dotenv
 pandas 
 numpy
+setuptools
+certifi
+pymongo
+
+-r requirements-dev.txt
+
+-e . # refers to setup.py, which is used for packaging and installing the project as a module.
