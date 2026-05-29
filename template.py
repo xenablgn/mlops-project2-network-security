@@ -26,8 +26,9 @@ list_of_files = [
     f"src/{project_name}/cloud/__init__.py",
     f"src/{project_name}/utils/common.py",
     f"src/{project_name}/exceptions/__init__.py",
+    f"src/{project_name}/exceptions/exception.py",
     f"src/{project_name}/logging/__init__.py",
-    f"src/{project_name}/logging/logging.log",
+    f"src/{project_name}/logging/logger.py",
     f"src/{project_name}/pipeline/__init__.py",
 ]
 
