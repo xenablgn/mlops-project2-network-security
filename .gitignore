@@ -3,3 +3,9 @@ venv/
 .env
 data/
 #.pre-commit-config.yaml
+## Ignore Python compiled cache files
+__pycache__/
+*.pyc
+*.pyo
+
+logs/
