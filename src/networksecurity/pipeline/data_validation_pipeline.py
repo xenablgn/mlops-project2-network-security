@@ -2,12 +2,14 @@ import os
 import sys
 
 from networksecurity.components.data_validation import DataValidation
-from networksecurity.entity.artifact_entity import DataValidationArtifact, DataIngestionArtifact
+from networksecurity.entity.artifact_entity import (
+    DataIngestionArtifact,
+    DataValidationArtifact,
+)
 from networksecurity.entity.config_entity import (
     DataValidationConfig,
     TrainingPipelineConfig,
 )
-
 from networksecurity.exceptions.exception import NetworkSecurityException
 from networksecurity.logging.logger import logging
 
@@ -19,6 +21,7 @@ class DataValidationPipeline:
         self.data_validation = DataValidation(
             data_validation_config=self.data_validation_config,
         )
+
     def initiate_data_validation(
         self,
     ) -> DataValidationArtifact:

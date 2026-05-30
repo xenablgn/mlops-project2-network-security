@@ -4,7 +4,9 @@ import sys
 import pandas as pd
 import pymongo
 from dotenv import load_dotenv
-from sklearn.model_selection import train_test_split  # type: ignore[reportMissingModuleSource]
+from sklearn.model_selection import (
+    train_test_split,  # type: ignore[reportMissingModuleSource]
+)
 
 from networksecurity.entity.config_entity import DataIngestionConfig
 from networksecurity.exceptions.exception import NetworkSecurityException

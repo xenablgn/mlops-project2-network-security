@@ -1,10 +1,9 @@
 import sys
 
+from networksecurity.exceptions.exception import NetworkSecurityException
 from networksecurity.logging.logger import logging
 from networksecurity.pipeline.data_ingestion_pipeline import DataIngestionPipeline
 from networksecurity.pipeline.data_validation_pipeline import DataValidationPipeline
-from networksecurity.exceptions.exception import NetworkSecurityException
-
 
 STAGE_NAME = "Data Ingestion Stage"
 

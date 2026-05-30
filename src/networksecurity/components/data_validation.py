@@ -4,9 +4,6 @@ import sys
 import pandas as pd
 from scipy.stats import ks_2samp
 
-from networksecurity.entity.artifact_entity import (
-    DataIngestionArtifact,
-)
 from networksecurity.entity.config_entity import DataValidationConfig
 from networksecurity.exceptions.exception import NetworkSecurityException
 from networksecurity.logging.logger import logging
@@ -55,9 +52,7 @@ class DataValidation:
         self,
         dataframe: pd.DataFrame,
     ) -> bool:
-        expected_columns = set(
-            list(col.keys())[0] for col in self.schema["columns"]
-        )
+        expected_columns = set(list(col.keys())[0] for col in self.schema["columns"])
         actual_columns = set(dataframe.columns)
 
         missing_columns = expected_columns - actual_columns

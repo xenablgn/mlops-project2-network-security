@@ -44,7 +44,7 @@ extend-exclude = ["venv", ".venv", "artifacts", "logs", "**/*.ipynb"]
 
 [tool.ruff.lint]
 select = ["E", "F", "I", "W", "N", "UP", "B"]
-ignore = ["E501"]
+ignore = ["E501", "N818"]
 
 [tool.ruff.format]
 quote-style = "double"

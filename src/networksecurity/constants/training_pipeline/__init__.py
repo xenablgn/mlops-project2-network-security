@@ -4,7 +4,6 @@ Definning all the constants related to training pipeline
 
 import os
 
-
 TARGET_COLUMN = "Result"
 PIPELINE_NAME = "NetworkSecurity"
 ARTIFACT_DIR = "artifacts"
