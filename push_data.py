@@ -22,10 +22,7 @@ CA_FILE = certifi.where()
 class NetworkDataExtract:
     def __init__(self):
         try:
-            self.mongo_client = pymongo.MongoClient(
-                MONGO_DB_URL,
-                tlsCAFile=CA_FILE
-            )
+            self.mongo_client = pymongo.MongoClient(MONGO_DB_URL, tlsCAFile=CA_FILE)
 
             # Verify connection
             self.mongo_client.admin.command("ping")
@@ -70,9 +67,7 @@ class NetworkDataExtract:
 
             inserted_count = len(result.inserted_ids)
 
-            logging.info(
-                f"{inserted_count} records inserted into '{collection_name}'"
-            )
+            logging.info(f"{inserted_count} records inserted into '{collection_name}'")
 
             return inserted_count
 
@@ -83,11 +78,7 @@ class NetworkDataExtract:
 
 if __name__ == "__main__":
     try:
-        FILE_PATH = os.path.join(
-            os.getcwd(),
-            "data",
-            "phisingData.csv"
-        )
+        FILE_PATH = os.path.join(os.getcwd(), "data", "phisingData.csv")
 
         DATABASE_NAME = "NetworkSecurityDB"
         COLLECTION_NAME = "NetworkData"
@@ -99,7 +90,7 @@ if __name__ == "__main__":
         inserted_count = network_data.insert_data_to_mongodb(
             records=records,
             database_name=DATABASE_NAME,
-            collection_name=COLLECTION_NAME
+            collection_name=COLLECTION_NAME,
         )
 
         logging.info(f"Successfully inserted {inserted_count} records.")

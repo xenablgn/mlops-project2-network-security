@@ -1,0 +1,7 @@
+[ 2026-05-30 12:30:04,823 ] 11 root - INFO - >>>>>>> Stage Data Ingestion Stage started <<<<<<<
+[ 2026-05-30 12:30:04,823 ] 16 root - ERROR - DataIngestionPipeline.__init__() missing 1 required positional argument: 'data_ingestion_config'
+Traceback (most recent call last):
+  File "/Users/xenan.bilgin/Projects/MLops/mlops-project2-network-security/main.py", line 12, in <module>
+    pipeline = DataIngestionPipeline()
+               ^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: DataIngestionPipeline.__init__() missing 1 required positional argument: 'data_ingestion_config'
