@@ -1,0 +1,4 @@
+[ 2026-05-30 09:46:51,485 ] 32 root - INFO - Successfully connected to MongoDB
+[ 2026-05-30 09:46:51,520 ] 51 root - INFO - Successfully converted CSV to JSON records. Total records: 11055
+[ 2026-05-30 09:46:58,146 ] 73 root - INFO - 11055 records inserted into 'NetworkData'
+[ 2026-05-30 09:46:58,147 ] 105 root - INFO - Successfully inserted 11055 records.
