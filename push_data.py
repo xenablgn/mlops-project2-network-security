@@ -1,9 +1,9 @@
 import os
 import sys
+
+import certifi
 import pandas as pd
 import pymongo
-import certifi
-
 from dotenv import load_dotenv
 from networksecurity.exceptions.exception import NetworkSecurityException
 from networksecurity.logging.logger import logging
@@ -30,7 +30,7 @@ class NetworkDataExtract:
 
         except Exception as e:
             logging.exception("Failed to connect to MongoDB")
-            raise NetworkSecurityException(e, sys)
+            raise NetworkSecurityException(e, sys) from e
 
     def csv_to_json_converter(self, file_path):
         """
@@ -53,7 +53,7 @@ class NetworkDataExtract:
 
         except Exception as e:
             logging.exception("Error while converting CSV to JSON")
-            raise NetworkSecurityException(e, sys)
+            raise NetworkSecurityException(e, sys) from e
 
     def insert_data_to_mongodb(self, records, database_name, collection_name):
         """
@@ -73,7 +73,7 @@ class NetworkDataExtract:
 
         except Exception as e:
             logging.exception("Error while inserting data into MongoDB")
-            raise NetworkSecurityException(e, sys)
+            raise NetworkSecurityException(e, sys) from e
 
 
 if __name__ == "__main__":
@@ -97,4 +97,4 @@ if __name__ == "__main__":
 
     except Exception as e:
         logging.exception("Application execution failed")
-        raise NetworkSecurityException(e, sys)
+        raise NetworkSecurityException(e, sys) from e

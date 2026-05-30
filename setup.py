@@ -6,10 +6,9 @@ configuration of your project, such as metadata and dependencies.
 
 # Find the __init__.py files by find_packages() and include them in the package distribution
 from setuptools import find_packages, setup
-from typing import List
 
 
-def get_requirements(*file_paths: str) -> List[str]:
+def get_requirements(*file_paths: str) -> list[str]:
     """
     Reads the requirements from one or more files and returns them as a list.
 
@@ -21,7 +20,7 @@ def get_requirements(*file_paths: str) -> List[str]:
     requirements = []
     for file_path in file_paths:
         try:
-            with open(file_path, "r") as file:
+            with open(file_path) as file:
                 for line in file.readlines():
                     requirement = line.strip()
                     if (

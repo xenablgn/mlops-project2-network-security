@@ -1,12 +1,13 @@
+import sys
 
 from networksecurity.components.data_ingestion import DataIngestion
+from networksecurity.entity.artifact_entity import DataIngestionArtifact
+from networksecurity.entity.config_entity import (
+    DataIngestionConfig,
+    TrainingPipelineConfig,
+)
 from networksecurity.exceptions.exception import NetworkSecurityException
 from networksecurity.logging.logger import logging
-from networksecurity.entity.config_entity import DataIngestionConfig
-from networksecurity.entity.artifact_entity import DataIngestionArtifact
-from networksecurity.entity.config_entity import TrainingPipelineConfig
-
-import sys
 
 
 class DataIngestionPipeline:
@@ -24,9 +25,9 @@ class DataIngestionPipeline:
 
             return DataIngestionArtifact(
                 train_file_path=self.data_ingestion_config.training_file_path,
-                test_file_path=self.data_ingestion_config.testing_file_path
+                test_file_path=self.data_ingestion_config.testing_file_path,
             )
 
         except Exception as e:
             logging.exception("Error during data ingestion")
-            raise NetworkSecurityException(e, sys)
+            raise NetworkSecurityException(e, sys) from e

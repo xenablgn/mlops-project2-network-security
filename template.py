@@ -10,7 +10,7 @@ list_of_files = [
     "research/research.ipynb",
     "config/config.yaml",
     "params.yaml",
-    "schema.yaml",
+    "data_schema/schema.yaml",
     "Taskfile.yaml",
     "Dockerfile",
     ".pre-commit-config.yaml",

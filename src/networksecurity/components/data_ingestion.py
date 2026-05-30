@@ -1,15 +1,14 @@
-from networksecurity.exceptions.exception import NetworkSecurityException
-from networksecurity.logging.logger import logging
-from networksecurity.entity.config_entity import DataIngestionConfig
-from networksecurity.entity.artifact_entity import DataIngestionArtifact
-
 import os
 import sys
-import pymongo
+
 import pandas as pd
+import pymongo
+from dotenv import load_dotenv
 from sklearn.model_selection import train_test_split  # type: ignore[reportMissingModuleSource]
 
-from dotenv import load_dotenv
+from networksecurity.entity.config_entity import DataIngestionConfig
+from networksecurity.exceptions.exception import NetworkSecurityException
+from networksecurity.logging.logger import logging
 
 load_dotenv()
 
@@ -36,7 +35,7 @@ class DataIngestion:
                 f"Fetching data from collection: {self.data_ingestion_config.collection_name}"
             )
             data = pd.DataFrame(list(collection.find()))
-            
+
             if "_id" in data.columns:
                 data = data.drop("_id", axis=1)
 
@@ -48,8 +47,8 @@ class DataIngestion:
 
         except Exception as e:
             logging.exception("Error while fetching data from MongoDB")
-            raise NetworkSecurityException(e, sys)
-        
+            raise NetworkSecurityException(e, sys) from e
+
     def export_data_to_feature_store(self, data: pd.DataFrame):
         """Export data to feature store directory."""
         try:
@@ -63,10 +62,9 @@ class DataIngestion:
             return data
         except Exception as e:
             logging.exception("Error while exporting data to feature store")
-            raise NetworkSecurityException(e, sys)
-        
-        
-    def split_data_as_train_test(self,dataframe: pd.DataFrame):
+            raise NetworkSecurityException(e, sys) from e
+
+    def split_data_as_train_test(self, dataframe: pd.DataFrame):
         try:
             train_set, test_set = train_test_split(
                 dataframe, test_size=self.data_ingestion_config.train_test_split_ratio
@@ -76,13 +74,13 @@ class DataIngestion:
             logging.info(
                 "Exited split_data_as_train_test method of Data_Ingestion class"
             )
-            
+
             dir_path = os.path.dirname(self.data_ingestion_config.training_file_path)
-            
+
             os.makedirs(dir_path, exist_ok=True)
-            
-            logging.info(f"Exporting train and test file path.")
-            
+
+            logging.info("Exporting train and test file path.")
+
             train_set.to_csv(
                 self.data_ingestion_config.training_file_path, index=False, header=True
             )
@@ -90,8 +88,9 @@ class DataIngestion:
             test_set.to_csv(
                 self.data_ingestion_config.testing_file_path, index=False, header=True
             )
-            logging.info(f"Exported train and test file path.")
+            logging.info("Exported train and test file path.")
 
-            
+            return train_set, test_set
+
         except Exception as e:
-            raise NetworkSecurityException(e,sys)
+            raise NetworkSecurityException(e, sys) from e
