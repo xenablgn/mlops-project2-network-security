@@ -6,7 +6,8 @@ from networksecurity.logging.logger import logging
 
 
 class TrainingPipelineConfig:
-    def __init__(self, timestamp=None):
+    def __init__(self, timestamp: datetime | None = None) -> None:
+        """Initialize the training pipeline configuration with an optional timestamp."""
         if timestamp is None:
             timestamp = datetime.now()
         timestamp = timestamp.strftime("%m_%d_%Y_%H_%M_%S")
@@ -18,7 +19,8 @@ class TrainingPipelineConfig:
 
 
 class DataIngestionConfig:
-    def __init__(self, training_pipeline_config: TrainingPipelineConfig):
+    def __init__(self, training_pipeline_config: TrainingPipelineConfig) -> None:
+        """Build file paths and settings for the data ingestion stage."""
         self.data_ingestion_dir: str = os.path.join(
             training_pipeline_config.artifact_dir,
             training_pipeline.DATA_INGESTION_DIR_NAME,
@@ -54,7 +56,8 @@ class DataIngestionConfig:
 
 
 class DataValidationConfig:
-    def __init__(self, training_pipeline_config: TrainingPipelineConfig):
+    def __init__(self, training_pipeline_config: TrainingPipelineConfig) -> None:
+        """Build file paths and settings for the data validation stage."""
         self.data_validation_dir: str = os.path.join(
             training_pipeline_config.artifact_dir,
             training_pipeline.DATA_VALIDATION_DIR_NAME,
@@ -105,7 +108,8 @@ class DataValidationConfig:
 
 
 class DataTransformationConfig:
-    def __init__(self, training_pipeline_config: TrainingPipelineConfig):
+    def __init__(self, training_pipeline_config: TrainingPipelineConfig) -> None:
+        """Build file paths and settings for the data transformation stage."""
         self.data_transformation_dir: str = os.path.join(
             training_pipeline_config.artifact_dir,
             training_pipeline.DATA_TRANSFORMATION_DIR_NAME,
@@ -128,7 +132,8 @@ class DataTransformationConfig:
 
 
 class ModelTrainerConfig:
-    def __init__(self, training_pipeline_config: TrainingPipelineConfig):
+    def __init__(self, training_pipeline_config: TrainingPipelineConfig) -> None:
+        """Build file paths and settings for the model trainer stage."""
         self.model_trainer_dir: str = os.path.join(
             training_pipeline_config.artifact_dir,
             training_pipeline.MODEL_TRAINER_DIR_NAME,

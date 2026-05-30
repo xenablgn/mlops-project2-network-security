@@ -13,7 +13,7 @@ STAGE_NAME = "Data Ingestion Stage"
 try:
     logging.info(f">>>>>>> Stage {STAGE_NAME} started <<<<<<<")
     pipeline = DataIngestionPipeline()
-    data_ingestion_artifact = pipeline.intiate_data_ingestion()
+    data_ingestion_artifact = pipeline.initiate_data_ingestion()
     logging.info(f"Train file path: {data_ingestion_artifact.train_file_path}")
     logging.info(f"Test file path: {data_ingestion_artifact.test_file_path}")
     logging.info(f">>>>>>> Stage {STAGE_NAME} completed <<<<<<<\n\nx==========x")

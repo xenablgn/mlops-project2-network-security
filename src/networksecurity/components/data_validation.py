@@ -17,7 +17,8 @@ class DataValidation:
     def __init__(
         self,
         data_validation_config: DataValidationConfig,
-    ):
+    ) -> None:
+        """Initialize DataValidation with config and load schema."""
         try:
             self.data_validation_config = data_validation_config
             self.schema = read_yaml_file(self.data_validation_config.schema_file_path)
@@ -26,6 +27,7 @@ class DataValidation:
 
     @staticmethod
     def read_data(file_path: str) -> pd.DataFrame:
+        """Read a CSV file and return a pandas DataFrame."""
         try:
             return pd.read_csv(file_path)
         except Exception as e:
@@ -35,6 +37,7 @@ class DataValidation:
         self,
         dataframe: pd.DataFrame,
     ) -> bool:
+        """Return True if the dataframe has the expected number of columns."""
         expected_columns = len(self.schema["columns"])
         actual_columns = dataframe.shape[1]
 
@@ -52,6 +55,7 @@ class DataValidation:
         self,
         dataframe: pd.DataFrame,
     ) -> bool:
+        """Return True if all schema columns are present in the dataframe."""
         expected_columns = set(list(col.keys())[0] for col in self.schema["columns"])
         actual_columns = set(dataframe.columns)
 
@@ -69,6 +73,7 @@ class DataValidation:
         current_df: pd.DataFrame,
         threshold: float = 0.05,
     ) -> bool:
+        """Run KS-test per column and write drift report. Returns True if drift detected."""
         try:
             drift_detected = False
             report = {}

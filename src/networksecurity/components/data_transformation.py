@@ -13,7 +13,8 @@ from networksecurity.logging.logger import logging
 
 
 class DataTransformation:
-    def __init__(self, data_transformation_config: DataTransformationConfig):
+    def __init__(self, data_transformation_config: DataTransformationConfig) -> None:
+        """Initialize DataTransformation with configuration."""
         try:
             self.data_transformation_config: DataTransformationConfig = (
                 data_transformation_config
@@ -23,23 +24,15 @@ class DataTransformation:
             raise NetworkSecurityException(e, sys) from e
 
     @staticmethod
-    def read_data(file_path) -> pd.DataFrame:
+    def read_data(file_path: str) -> pd.DataFrame:
+        """Read a CSV file and return a pandas DataFrame."""
         try:
             return pd.read_csv(file_path)
         except Exception as e:
             raise NetworkSecurityException(e, sys) from e
 
     def get_data_transformer_object(self) -> Pipeline:
-        """
-        It initialises a KNNImputer object with the parameters specified in the training_pipeline.py file
-        and returns a Pipeline object with the KNNImputer object as the first step.
-
-        Args:
-          cls: DataTransformation
-
-        Returns:
-          A Pipeline object
-        """
+        """Build and return a KNNImputer preprocessing pipeline."""
         logging.info(
             "Entered get_data_trnasformer_object method of Trnasformation class"
         )

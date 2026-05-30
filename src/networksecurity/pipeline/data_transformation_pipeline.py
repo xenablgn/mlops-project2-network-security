@@ -18,7 +18,8 @@ from networksecurity.utils.common import save_numpy_array, save_object
 
 
 class DataTransformationPipeline:
-    def __init__(self, data_validation_artifact: DataValidationArtifact):
+    def __init__(self, data_validation_artifact: DataValidationArtifact) -> None:
+        """Initialize data transformation pipeline with config and component."""
         self.data_validation_artifact = data_validation_artifact
         self.data_transformation_config = DataTransformationConfig(
             TrainingPipelineConfig()
@@ -26,6 +27,7 @@ class DataTransformationPipeline:
         self.data_transformation = DataTransformation(self.data_transformation_config)
 
     def initiate_data_transformation(self) -> DataTransformationArtifact:
+        """Run the full data transformation process and return the artifact."""
         logging.info("Starting data transformation")
         try:
             train_df = DataTransformation.read_data(

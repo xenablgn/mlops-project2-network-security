@@ -20,10 +20,11 @@ if not MONGO_DB_URL:
 
 
 class DataIngestion:
-    def __init__(self, data_ingestion_config: DataIngestionConfig):
+    def __init__(self, data_ingestion_config: DataIngestionConfig) -> None:
+        """Initialize DataIngestion with configuration."""
         self.data_ingestion_config = data_ingestion_config
 
-    def export_collection_as_dataframe(self):
+    def export_collection_as_dataframe(self) -> pd.DataFrame:
         """Export MongoDB collection data as a pandas DataFrame."""
         try:
             logging.info("Connecting to MongoDB...")
@@ -51,7 +52,7 @@ class DataIngestion:
             logging.exception("Error while fetching data from MongoDB")
             raise NetworkSecurityException(e, sys) from e
 
-    def export_data_to_feature_store(self, data: pd.DataFrame):
+    def export_data_to_feature_store(self, data: pd.DataFrame) -> pd.DataFrame:
         """Export data to feature store directory."""
         try:
             feature_store_file_path = self.data_ingestion_config.feature_store_file_path
@@ -66,7 +67,10 @@ class DataIngestion:
             logging.exception("Error while exporting data to feature store")
             raise NetworkSecurityException(e, sys) from e
 
-    def split_data_as_train_test(self, dataframe: pd.DataFrame):
+    def split_data_as_train_test(
+        self, dataframe: pd.DataFrame
+    ) -> tuple[pd.DataFrame, pd.DataFrame]:
+        """Split dataframe into train/test sets and save them to disk."""
         try:
             train_set, test_set = train_test_split(
                 dataframe, test_size=self.data_ingestion_config.train_test_split_ratio

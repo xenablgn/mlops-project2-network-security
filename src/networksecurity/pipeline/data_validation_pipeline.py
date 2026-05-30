@@ -15,7 +15,8 @@ from networksecurity.logging.logger import logging
 
 
 class DataValidationPipeline:
-    def __init__(self, data_ingestion_artifact: DataIngestionArtifact):
+    def __init__(self, data_ingestion_artifact: DataIngestionArtifact) -> None:
+        """Initialize data validation pipeline with config and component."""
         self.data_validation_config = DataValidationConfig(TrainingPipelineConfig())
         self.data_ingestion_artifact = data_ingestion_artifact
         self.data_validation = DataValidation(
@@ -25,6 +26,7 @@ class DataValidationPipeline:
     def initiate_data_validation(
         self,
     ) -> DataValidationArtifact:
+        """Run the full data validation process and return the artifact."""
         try:
             logging.info("Starting data validation")
 

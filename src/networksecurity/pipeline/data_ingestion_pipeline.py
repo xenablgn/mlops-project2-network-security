@@ -11,11 +11,13 @@ from networksecurity.logging.logger import logging
 
 
 class DataIngestionPipeline:
-    def __init__(self):
+    def __init__(self) -> None:
+        """Initialize data ingestion pipeline with config and component."""
         self.data_ingestion_config = DataIngestionConfig(TrainingPipelineConfig())
         self.data_ingestion = DataIngestion(self.data_ingestion_config)
 
-    def intiate_data_ingestion(self) -> DataIngestionArtifact:
+    def initiate_data_ingestion(self) -> DataIngestionArtifact:
+        """Run the full data ingestion process and return the artifact."""
         try:
             data = self.data_ingestion.export_collection_as_dataframe()
             data = self.data_ingestion.export_data_to_feature_store(data)
