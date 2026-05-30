@@ -9,3 +9,5 @@ __pycache__/
 *.pyo
 
 logs/
+artifacts/
+.ruff_cache/

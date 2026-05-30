@@ -10,7 +10,9 @@ STAGE_NAME = "Data Ingestion Stage"
 try:
     logging.info(f">>>>>>> Stage {STAGE_NAME} started <<<<<<<")
     pipeline = DataIngestionPipeline()
-    pipeline.initiate_data_ingestion()
+    train_test_paths=pipeline.intiate_data_ingestion()
+    logging.info(f"Train file path: {train_test_paths.train_file_path}")
+    logging.info(f"Test file path: {train_test_paths.test_file_path}")
     logging.info(f">>>>>>> Stage {STAGE_NAME} completed <<<<<<<\n\nx==========x")
 except Exception as e:
     logging.exception(e)
